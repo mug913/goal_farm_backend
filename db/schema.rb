@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_171613) do
+ActiveRecord::Schema.define(version: 2020_07_11_202710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,18 +29,18 @@ ActiveRecord::Schema.define(version: 2020_07_11_171613) do
     t.string "target"
     t.date "last_click"
     t.integer "level"
-    t.string "units"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "units"
   end
 
   create_table "maps", force: :cascade do |t|
-    t.bigint "goals_id", null: false
-    t.bigint "users_id", null: false
+    t.bigint "goal_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["goals_id"], name: "index_maps_on_goals_id"
-    t.index ["users_id"], name: "index_maps_on_users_id"
+    t.index ["goal_id"], name: "index_maps_on_goal_id"
+    t.index ["user_id"], name: "index_maps_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +52,6 @@ ActiveRecord::Schema.define(version: 2020_07_11_171613) do
   end
 
   add_foreign_key "days", "users", column: "users_id"
-  add_foreign_key "maps", "goals", column: "goals_id"
-  add_foreign_key "maps", "users", column: "users_id"
+  add_foreign_key "maps", "goals"
+  add_foreign_key "maps", "users"
 end
