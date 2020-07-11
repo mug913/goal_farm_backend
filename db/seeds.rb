@@ -10,4 +10,4 @@
 
 # goals = Goal.create([{target: 'Run' , level: 1 ,units: {time: '00:40:00', distance: 10}},{target: 'Run', level: 1 ,units: {time: '00:45:00', distance: 11}}])
 
-maps = Map.create([{goal_id: Goal.first.id, user_id: User.first.id},{goal_id: Goal.last.id, user_id: User.first.id}])
+# maps = Map.create([{goal_id: Goal.first.id, user_id: User.first.id},{goal_id: Goal.last.id, user_id: User.first.id}])

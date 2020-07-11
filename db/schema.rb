@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_202710) do
+ActiveRecord::Schema.define(version: 2020_07_11_211605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
-    t.bigint "users_id", null: false
+    t.bigint "user_id"
     t.string "span"
     t.string "event"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_days_on_users_id"
+    t.index ["user_id"], name: "index_days_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_07_11_202710) do
   end
 
   create_table "maps", force: :cascade do |t|
-    t.bigint "goal_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "goal_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["goal_id"], name: "index_maps_on_goal_id"
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(version: 2020_07_11_202710) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tz"
   end
 
-  add_foreign_key "days", "users", column: "users_id"
+  add_foreign_key "days", "users"
   add_foreign_key "maps", "goals"
   add_foreign_key "maps", "users"
 end
