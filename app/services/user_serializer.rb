@@ -9,7 +9,7 @@ class UserSerializer
 
     def to_serialized_json
         @user.to_json(:include => {
-            :goals => {:only => [:target, :id, :last_click, :level, :create_at, :units]}
+            :goals => {:except => [:updated_at]}
         }, :except => [:password_digest])
     end
  
