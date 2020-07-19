@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the API Backend of a goal tracking application. The Front End repository is stored here:
+https://github.com/mug913/goal_farm_frontend
 
-Things you may want to cover:
+Basic functionality at this time:
 
-* Ruby version
+User Account creation and retrieval.
 
-* System dependencies
+Goal creation / activity tracking by 24 hour cycle. To create a goal, click on any empty (gray) goal area.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If the goal has been activated in the last 24 hours it will display green, if not it will go red and then black until it is reactivated.
