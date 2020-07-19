@@ -3,7 +3,7 @@ class Api::V1::GoalsController < ApplicationController
     def index 
        if (params[:user_id])
         user = User.find_by_id(params[:user_id])
-        goals = user.goals
+        goals = user.Goal.all
         render json: goals
        else
         goals = Goal.all
@@ -17,11 +17,13 @@ class Api::V1::GoalsController < ApplicationController
     end
 
     def create
-        goal = Goal.new(goal_params)
-        if goal.save
+        user = User.find_by_id(params[:user_id])
+        goal = Goal.create(goal_params)
+        goal.user = user
+        if goal.valid?
             render json: goal, status: :accepted
         else
-            render json: {erros: goal.errors.full_messages}, status:
+            render json: {errors: goal.errors.full_messages}, status:
             :unprocessible_entity
         end
     end
