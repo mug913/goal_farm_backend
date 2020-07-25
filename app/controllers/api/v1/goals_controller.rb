@@ -28,6 +28,18 @@ class Api::V1::GoalsController < ApplicationController
         end
     end
 
+    def update
+        user = User.find_by_id(params[:user_id])
+        goal = Goal.find_by_id(params[:id])
+        goal.update(last_click: params[:last_click])
+        if goal.valid?
+            render json: goal, status: :accepted
+        else
+            render json: {errors: goal.errors.full_messages}, status:
+            :unprocessible_entity
+        end
+    end
+
     def edit
     end
 
