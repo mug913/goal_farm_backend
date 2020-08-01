@@ -11,8 +11,10 @@ Goal.destroy_all
 Map.destroy_all
 Day.destroy_all
 
- users = User.create([{ username: 'test1', email: 'test1@email.com', password: 'test11234'}, {username: 'test2', email: 'test2@email.com', password: 'test21234'}])
+ users = User.create([{ username: 'test1', email: 'test1@email.com'}, {username: 'test2', email: 'test2@email.com'}])
 
- goals = Goal.create([{target: 'Run' , level: 1 ,units: {time: '00:40:00', distance: 10}},{target: 'Run', level: 1 ,units: {time: '00:45:00', distance: 11}}])
+ goals = Goal.create([{target: 'Run' , level: 1 , goal_slot: 1, units: {time: '00:40:00', distance: 10}},
+ {target: 'Row', level: 1 , goal_slot: 2, units: {time: '00:45:00', distance: 11}},
+ {target: 'Check', level: 1 , goal_slot: 3, units: {}}])
 
  maps = Map.create([{goal_id: Goal.first.id, user_id: User.first.id},{goal_id: Goal.last.id, user_id: User.first.id}])

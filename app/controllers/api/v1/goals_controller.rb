@@ -49,7 +49,7 @@ class Api::V1::GoalsController < ApplicationController
     private
 
     def goal_params
-        params.require(:goal).permit(:target, :last_click, :level, :units)
+        params.require(:goal).permit(:target, :last_click, :level, :units, :goal_slot)
     end
 
 end
