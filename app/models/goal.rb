@@ -1,4 +1,4 @@
 class Goal < ApplicationRecord
-    has_one :map, dependent: :destroy
-    has_one :user, through: :map, dependent: :destroy
+    belongs_to :user, dependent: :destroy
+    has_many :records, dependent: :destroy
 end
