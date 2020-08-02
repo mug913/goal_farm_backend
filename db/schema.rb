@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_184820) do
+ActiveRecord::Schema.define(version: 2020_08_02_212331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_08_02_184820) do
     t.json "units"
     t.integer "goal_slot"
     t.bigint "user_id"
+    t.integer "streak"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
